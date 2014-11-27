@@ -1,0 +1,14 @@
+!include d:\toolkit\c\samples\toolkit.inc
+.SUFFIXES: .cpp .c
+.cpp.obj:
+	wpp386 -ox -DNDEBUG $*.cpp
+.c.obj:
+	wcc386 -ox -DNDEBUG $*.c
+
+all:	eventer.exe .symbolic
+
+eventer.exe:	eventer.obj eventer.lnk
+	$(LINK) $(LFLAGS) @eventer.lnk
+
+eventer.obj:	eventer.cpp
+
